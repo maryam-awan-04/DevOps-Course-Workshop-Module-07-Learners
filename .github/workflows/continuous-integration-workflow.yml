@@ -34,6 +34,6 @@ jobs:
 
     - name: failure message
       if: failure ()
-      with:
+      env:
         super_secret: ${{ secrets.SLACK_NOTIFICATION }}
-      run: super_secret
+      run: curl -X POST --data-urlencode "$env:SUPER_SECRET" https://hooks.slack.com/services/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
