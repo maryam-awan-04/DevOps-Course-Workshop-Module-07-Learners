@@ -11,9 +11,9 @@ jobs:
     - name: build c# code
       run: dotnet build
 
-    - name: install typescript dependencies
-      working-directory: DotnetTemplate.Web
-      run: npm install
+    # - name: install typescript dependencies
+    #   working-directory: DotnetTemplate.Web
+    #   run: npm install
     
     - name: build typescript code
       working-directory: DotnetTemplate.Web
@@ -36,4 +36,4 @@ jobs:
       if: failure ()
       env:
         super_secret: ${{ secrets.SLACK_NOTIFICATION }}
-      run: curl -X POST --data-urlencode "$env:SUPER_SECRET" https://hooks.slack.com/services/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
+      run: curl -X POST --data-urlencode "$env:SUPER_SECRET" https://hooks.slack.com/services/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
