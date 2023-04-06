@@ -3,7 +3,7 @@ on: [push]
 
 jobs:
   build:
-    name: Build
+    name: Build and Test
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -18,12 +18,6 @@ jobs:
     - name: build typescript code
       working-directory: DotnetTemplate.Web
       run: npm run build
-    
-  test:
-    name: Test
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
 
     - name: test c# code
       run: dotnet test
