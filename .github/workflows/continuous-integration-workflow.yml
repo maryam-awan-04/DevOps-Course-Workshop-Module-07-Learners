@@ -26,3 +26,13 @@ jobs:
       working-directory: DotnetTemplate.Web
       run: npm t
   
+  message:
+  name: Error Message
+  runs-on: ubuntu-latest
+  steps:
+  - uses: actions/checkout@v3
+
+  - name: failure message
+    if: failure ()
+    with:
+      super_secret: ${{ secrets.SLACK_NOTIFICATION }}
