@@ -31,4 +31,4 @@ jobs:
       env:
         slack_notification: ${{ secrets.SLACK_NOTIFICATION }}
         slack_url: ${{ secrets.SLACK_URL }}
-      run: curl -X POST --data-urlencode "$env:slack_notification" $env:slack_url
+      run: curl -X POST --data-urlencode "$slack_notification" $slack_url
