@@ -3,7 +3,31 @@ on: [push]
 
 jobs:
   build:
-    name: Build and test
+    name: Build
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+
+    - name: build c# code
+      run: dotnet build
+
+    - name: install typescript dependencies
+      working-directory: DotnetTemplate.Web
+      run: npm install
+    
+    - name: build typescript code
+      run: npm run build
+    
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: test c# code
+      run: dotnet test
+
+    - name: run tests in jasmine
+      working-directory: DotnetTemplate.Web
+      run: npm t
+  
