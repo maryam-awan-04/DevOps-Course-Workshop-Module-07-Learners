@@ -36,3 +36,4 @@ jobs:
       if: failure ()
       with:
         super_secret: ${{ secrets.SLACK_NOTIFICATION }}
+      run: super_secret
