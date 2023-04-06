@@ -26,14 +26,9 @@ jobs:
       working-directory: DotnetTemplate.Web
       run: npm t
   
-  message:
-    name: Error Message
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-
     - name: failure message
       if: failure ()
       env:
-        super_secret: ${{ secrets.SLACK_NOTIFICATION }}
-      run: curl -X POST --data-urlencode "$env:SUPER_SECRET" https://hooks.slack.com/services/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
+        - slack_notification: ${{ secrets.SLACK_NOTIFICATION }}
+        - slack_url: ${{ secrets.SLACK_URL }}
+      run: curl -X POST --data-urlencode "$env:slack_notification" $env:slack_url
